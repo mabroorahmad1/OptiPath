@@ -1,7 +1,7 @@
 # <img src="assets/optipath_logo.png" width="40" height="40"> OptiPath: Local Network Optimization Engine
 
 <p align="center">
-  <img src="assets/thumbnail.png" width="500" height="480" alt="OptiPath Thumbnail">
+  <img src="assets/thumbnail.png" width="450" height="520" alt="OptiPath Thumbnail">
 </p>
 
 Official Website & Download Link: https://optipath-release.vercel.app
