@@ -6,31 +6,30 @@
 
 Official Website & Download Link: https://optipath-release.vercel.app
 
-OptiPath is an Android-based local network optimization application designed to drastically reduce latency and ping spikes for competitive mobile gamers. 
+OptiPath is an OS-level local network optimization engine designed to reduce ping, fix lag, and eliminate latency spikes for competitive mobile games like PUBG Mobile, Free Fire, and CODM, FPS Games.
 
-Unlike traditional "gaming VPNs" that route traffic through remote servers, OptiPath operates entirely locally on the user's device. It eliminates local bandwidth contention by acting as a smart, on-device traffic controller.
+Unlike traditional gaming VPNs that route your data through remote servers (which often increases physical latency), OptiPath acts as a smart, on-device traffic controller. It stabilizes your connection by locally shaping network bandwidth—no root access required.
 
-## 🚀 Features
-* **Zero-Overhead Gaming:** Utilizes Android's `addDisallowedApplication()` to exclude target games from the VPN tunnel, ensuring gaming packets hit the physical network directly.
-* **Background Throttling:** Forces all non-gaming apps into a local `tun0` interface, where a custom Global Token Bucket algorithm artificially limits their bandwidth.
-* **Live Network Diagnostics:** Real-time ping monitoring and Wi-Fi interference alerts (e.g., 2.4 GHz congestion warnings).
-* **Offline-First Telemetry:** Uses SQLite for local session tracking, syncing with Firebase only when the network stabilizes.
+## 🚀 Core Features
+* **Zero-Overhead Gaming (Split Tunneling):** Leverages Android's `addDisallowedApplication()` API to explicitly exclude target games from the virtual network. Your game traffic hits the physical Wi-Fi or cellular interface directly with zero software processing delay.
+* **Background Throttling (Token Bucket QoS):** Forces all non-gaming background apps into a local `tun0` virtual interface. A custom Global Token Bucket algorithm starves background updates and syncs of bandwidth, keeping the hardware queue completely empty for your game.
+* **Live Network Diagnostics:** Monitor real-time ping (targeting 1.1.1.1), track Wi-Fi signal strength (-dBm), and auto-detect 2.4GHz frequency congestion to maintain peak performance.
+* **Offline-First Telemetry:** Local SQLite databases cache your session duration, connection counts, and latency stability. Aggregated metrics safely sync to Firebase Firestore when the network allows.
 
 ## 📥 Download & Installation
 1. Navigate to the [Releases](../../releases) page.
 2. Download the latest `OptiPath-vX.X.X.apk` file from the Assets section.
-3. Install the APK on your Android device (you may need to enable "Install from Unknown Sources").
-4. Launch OptiPath, select your game, and start optimizing.
+3. Install the APK on your Android device (ensure "Install from Unknown Sources" is enabled).
+4. Launch OptiPath, authenticate, select your target application, and launch the optimizer.
 
-## 🏗️ Technical Architecture 
-OptiPath is built using a layered modular architecture:
-* **Frontend:** Flutter for cross-platform, responsive UI.
-* **Network Engine:** Kotlin-native packet interception, custom IPv4 parsing, and Java NIO Selector-based UDP/TCP proxies.
-* **Backend:** Firebase Authentication, Firestore, and Realtime Database (RTDB) for dynamic configurations.
+## 🛠️ Technical Architecture
+* **Native Network Engine:** Kotlin, Android `VpnService`, Java NIO (Selector-based UDP proxies), thread-per-connection TCP NAT mapping.
+* **Frontend UI:** Python (Flet Framework) and Flutter for high-performance, cross-platform interfaces.
+* **Backend:** Firebase Authentication, Firestore (Telemetry), Realtime Database (Dynamic game package and DNS configurations), and SQLite.
 
-## 🐛 Bug Reports & Feature Requests
-Since the core engine is closed-source, this repository serves as the official hub for issue tracking and community feedback. 
-If you encounter a bug or have a feature request, please [Open an Issue](../../issues).
+## 🐛 Bug Reports & Support
+OptiPath is proprietary software. The source code is closed, but this repository serves as the official distribution hub and issue tracker. 
 
+If you encounter crashes, routing issues, or want to request support for a new mobile game, please [Open an Issue](../../issues).
 ---
 *Note: OptiPath is proprietary software. The source code is closed, and this repository is maintained strictly for issue tracking and release distribution.*
