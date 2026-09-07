@@ -24,7 +24,7 @@ Unlike traditional "gaming VPNs" that route traffic through remote servers, Opti
 
 ## 🏗️ Technical Architecture 
 OptiPath is built using a layered modular architecture:
-* **Frontend:** Python (Flet Framework) & Flutter for cross-platform, responsive UI.
+* **Frontend:** Flutter for cross-platform, responsive UI.
 * **Network Engine:** Kotlin-native packet interception, custom IPv4 parsing, and Java NIO Selector-based UDP/TCP proxies.
 * **Backend:** Firebase Authentication, Firestore, and Realtime Database (RTDB) for dynamic configurations.
 
